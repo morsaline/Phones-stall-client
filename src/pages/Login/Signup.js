@@ -1,87 +1,119 @@
 import React, { useContext, useState } from "react";
-import toast from "react-hot-toast";
+
 import { Link, useLocation, useNavigate } from "react-router-dom";
-// import { setToken } from "../../API/auth";
 import PrimaryButton from "../../Components/Button/PrimaryButton";
 import { AuthContext } from "../../contexts/AuthProvider";
+import toast from "react-hot-toast";
+import { setToken } from "../../API/auth";
 
-const Login = () => {
-  const [userEmail, setUserEmail] = useState();
-  const { user, signin, setLoading, signInWithGoogle, resetPassword } =
-    useContext(AuthContext);
+const Signup = () => {
+  // const[imageData,setImageData]=useState()
+  const {
+    createUser,
+    loading,
+    setLoading,
+    updateUserProfile,
+    verifyEmail,
+    signInWithGoogle,
+  } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    const name = event.target.name.value;
+    const image = event.target.image.files[0];
     const email = event.target.email.value;
     const password = event.target.password.value;
     // console.log(image,name,email,password)
     //e05aece1a50282f02c6be04f4db02c46
 
-    signin(email, password)
-      .then((result) => {
-        // setToken(result.user);
-        toast.success("sign In complete");
-        navigate(from, { replace: true });
+    const formData = new FormData();
+    formData.append("image", image);
+
+    const url = `https://api.imgbb.com/1/upload?key=e05aece1a50282f02c6be04f4db02c46`;
+
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // (data.data.display_url)
+
+        createUser(email, password)
+          .then((result) => {
+            setToken(result.user);
+            console.log(result);
+            updateUserProfile(name, data.data.display_url).then(
+              verifyEmail().then(() => {
+                toast.success("check your verification  to your");
+                navigate(from, { replace: true });
+              })
+            );
+          })
+          .catch((err) => console.log(err));
       })
-      .catch((err) => {
-        toast.error(err.message);
-        console.log(err);
-        setLoading(false);
-      });
+      .catch((err) => console.log(err));
   };
   const handleGoogle = () => {
     signInWithGoogle().then((result) => {
-      //   setToken(result.user);
       console.log(result.user);
+      setToken(result.user);
+      setLoading(false);
+      navigate(from, { replace: true });
     });
-  };
-  const handleReset = () => {
-    resetPassword(userEmail)
-      .then(() => {
-        toast.success("please check your email for reste password");
-      })
-      .catch((err) => {
-        toast.error(err.message);
-        console.log(err);
-        setLoading(false);
-      });
   };
   return (
     <div className="flex justify-center items-center pt-8">
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
         <div className="mb-8 text-center">
-          <h1 className="my-3 text-4xl font-bold">Sign in</h1>
-          <p className="text-sm text-gray-400">
-            Sign in to access your account
-          </p>
+          <h1 className="my-3 text-4xl font-bold">Signup</h1>
+          <p className="text-sm text-gray-400">Create a new account</p>
         </div>
         <form
           onSubmit={handleSubmit}
           noValidate=""
           action=""
-          className="space-y-6 ng-untouched ng-pristine ng-valid"
+          className="space-y-12 ng-untouched ng-pristine ng-valid"
         >
           <div className="space-y-4">
+            <div>
+              <label htmlFor="email" className="block mb-2 text-sm">
+                Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Enter Your Name Here"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-green-500 bg-gray-200 text-gray-900"
+                data-temp-mail-org="0"
+              />
+            </div>
+            <div>
+              <label htmlFor="image" className="block mb-2 text-sm">
+                Select Image:
+              </label>
+              <input type="file" id="image" name="image" accept="image/*" />
+            </div>
             <div>
               <label htmlFor="email" className="block mb-2 text-sm">
                 Email address
               </label>
               <input
-                onBlur={(event) => setUserEmail(event.target.value)}
                 type="email"
                 name="email"
                 id="email"
-                required
                 placeholder="Enter Your Email Here"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-green-500 bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
               />
             </div>
             <div>
-              <div className="flex justify-between">
-                <label htmlFor="password" className="text-sm mb-2">
+              <div className="flex justify-between mb-2">
+                <label htmlFor="password" className="text-sm">
                   Password
                 </label>
               </div>
@@ -89,34 +121,26 @@ const Login = () => {
                 type="password"
                 name="password"
                 id="password"
-                required
                 placeholder="*******"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-green-500 bg-gray-200 text-gray-900"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:outline-green-500 text-gray-900"
               />
             </div>
           </div>
-
-          <div>
-            <PrimaryButton
-              type="submit"
-              classes="w-full px-8 py-3 font-semibold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white text-gray-100"
-            >
-              Sign in
-            </PrimaryButton>
+          <div className="space-y-2">
+            <div>
+              <PrimaryButton
+                type="submit"
+                classes="w-full px-8 py-3 font-semibold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white text-gray-100"
+              >
+                Sign up
+              </PrimaryButton>
+            </div>
           </div>
         </form>
-        <div className="space-y-1">
-          <button
-            onClick={handleReset}
-            className="text-xs hover:underline text-gray-400"
-          >
-            Forgot password?
-          </button>
-        </div>
         <div className="flex items-center pt-4 space-x-1">
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
           <p className="px-3 text-sm dark:text-gray-400">
-            Login with social accounts
+            Signup with social accounts
           </p>
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
@@ -154,9 +178,9 @@ const Login = () => {
           </button>
         </div>
         <p className="px-6 text-sm text-center text-gray-400">
-          Don't have an account yet?{" "}
-          <Link to="/signup" className="hover:underline text-gray-600">
-            Sign up
+          Already have an account yet?{" "}
+          <Link to="/login" className="hover:underline text-gray-600">
+            Sign In
           </Link>
           .
         </p>
@@ -165,4 +189,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
