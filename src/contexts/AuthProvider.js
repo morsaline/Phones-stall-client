@@ -29,12 +29,9 @@ const AuthProvider = ({ children }) => {
   };
 
   //   2. Update Name
-  const updateUserProfile = (name, photo) => {
+  const updateUser = (userInfo) => {
     setLoading(true);
-    return updateProfile(auth.currentUser, {
-      displayName: name,
-      photoURL: photo,
-    });
+    return updateProfile(auth.currentUser, userInfo);
   };
 
   // 4. Google Signin
@@ -78,7 +75,7 @@ const AuthProvider = ({ children }) => {
   const authInfo = {
     user,
     createUser,
-    updateUserProfile,
+    updateUser,
     signInWithGoogle,
     logout,
     signin,
