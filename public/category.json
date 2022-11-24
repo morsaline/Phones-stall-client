@@ -1,0 +1,68 @@
+[
+  {
+    "model": "Iphone XR",
+    "image": "https://www.mobiledokan.com/wp-content/uploads/2020/04/Apple-iPhone-XR-new.jpg",
+    "brand": "Iphone",
+    "resale_price": "28000",
+    "original_price": "40000",
+    "condition": "excelent",
+    "location": "Dhaka",
+    "post_date": "nov 24 2022",
+    "duration": "2years"
+  },
+  {
+    "model": "Iphone 11",
+    "image": "https://adminapi.applegadgetsbd.com/storage/media/large/1540-28625.jpg",
+    "brand": "Iphone",
+    "resale_price": "35000",
+    "original_price": "50000",
+    "condition": "good",
+    "location": "Dhaka",
+    "post_date": "nov 24 2022",
+    "duration": "2years"
+  },
+  {
+    "model": "Samsung s10",
+    "image": "https://www.gizmochina.com/wp-content/uploads/2019/05/Samsung-Galaxy-S10-Plus.jpg",
+    "brand": "Samsung",
+    "resale_price": "25000",
+    "original_price": "35000",
+    "condition": "excelent",
+    "location": "Rangpur",
+    "post_date": "nov 24 2022",
+    "duration": "2years"
+  },
+  {
+    "model": "Samsung a20",
+    "image": "https://c.ndtvimg.com/2019-04/un68hje8_samsung-galaxy-a20-_640x480_12_April_19.jpg",
+    "brand": "Samsung",
+    "resale_price": "28000",
+    "original_price": "40000",
+    "condition": "good",
+    "location": "Dhaka",
+    "post_date": "nov 24 2022",
+    "duration": "2years"
+  },
+  {
+    "model": "Nokia 8",
+    "image": "https://www.mobilepagla.com/wp-content/uploads/2019/07/Nokia_8.jpg",
+    "brand": "Nokia",
+    "resale_price": "28000",
+    "original_price": "40000",
+    "condition": "excelent",
+    "location": "Dhaka",
+    "post_date": "nov 24 2022",
+    "duration": "2years"
+  },
+  {
+    "model": "Nokia 10",
+    "image": "https://www.mobile57.com/product_images/webp/nokia-10.webp?ezimgfmt=rs:257x350/rscb2/ngcb2/notWebP",
+    "brand": "Nokia",
+    "resale_price": "28000",
+    "original_price": "40000",
+    "condition": "good",
+    "location": "Dhaka",
+    "post_date": "nov 24 2022",
+    "duration": "2years"
+  }
+]

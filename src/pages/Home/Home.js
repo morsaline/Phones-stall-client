@@ -1,9 +1,11 @@
 import React from "react";
+import Categories from "./Categories/Categories";
 
 const Home = () => {
   return (
     <div>
-      <p>THis is home</p>
+      <p>THis is homesssss</p>
+      <Categories></Categories>
     </div>
   );
 };
