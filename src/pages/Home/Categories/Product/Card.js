@@ -13,9 +13,9 @@ const Card = ({ product, setItem }) => {
         <p>condition:{condition}</p>
         <p>used:{duration}</p>
         <p>location:{location}</p>
-        <p>post-date:{product.post_date}</p>
-        <p>post-date:{product.original_price}</p>
-        <p>post-date:{product.resale_price}</p>
+        <p>post Date:{product.post_date}</p>
+        <p>Original Price:{product.original_price}</p>
+        <p>Resale Price:{product.resale_price}</p>
 
         <div className="card-actions justify-end">
           <label
