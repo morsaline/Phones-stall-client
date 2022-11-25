@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 // import { UseToken } from "../../ApiServices/auth";
 // import { getUserToken } from '../../ApiServices/auth';
@@ -11,7 +12,7 @@ const Login = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const { signin } = useContext(AuthContext);
+  const { signin, signInWithGoogle, setLoading } = useContext(AuthContext);
   const [loginError, setLoginError] = useState("");
   const [loginUserEmail, setLoginUserEmail] = useState("");
   //   const [token] = UseToken(loginUserEmail);
@@ -41,9 +42,29 @@ const Login = () => {
       .catch((error) => {
         console.log(error.message);
         setLoginError(error.message);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
+  // const handleGoogle = () => {
+  //   signInWithGoogle().then((result) => {
+  //     console.log(result.user);
+  //     const user = result.user;
+  //     toast.success("User Created Successfully.");
+  //     // saveUser(user?.displayName, user?.email, "buyer");
+  //     // setToken(result.user);
+  //     // setLoading(false);
+  //     // navigate(from, { replace: true });
+  // //   });
+  // };
+  const handleGoogle = () => {
+    signInWithGoogle().then((result) => {
+      const user = result.user;
+      toast.success("sign in complete");
+    });
+  };
   return (
     <div className="h-[800px] flex justify-center items-center">
       <div className="w-96 p-7">
@@ -105,7 +126,9 @@ const Login = () => {
           </Link>
         </p>
         <div className="divider">OR</div>
-        <button className="btn btn-outline w-full">CONTINUE WITH GOOGLE</button>
+        <button onClick={handleGoogle} className="btn btn-outline w-full">
+          CONTINUE WITH GOOGLE
+        </button>
       </div>
     </div>
   );

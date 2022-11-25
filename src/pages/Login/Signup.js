@@ -49,7 +49,7 @@ const SignUp = () => {
       console.log(result.user);
       const user = result.user;
       toast.success("User Created Successfully.");
-      saveUser(user?.name, user?.email, "buyer");
+      saveUser(user?.displayName, user?.email, "buyer");
       // setToken(result.user);
       // setLoading(false);
       // navigate(from, { replace: true });
@@ -59,7 +59,7 @@ const SignUp = () => {
   const saveUser = (name, email, role) => {
     const user = { name, email, role };
     fetch("http://localhost:5000/users", {
-      method: "post",
+      method: "put",
       headers: {
         "content-type": "application/json",
       },

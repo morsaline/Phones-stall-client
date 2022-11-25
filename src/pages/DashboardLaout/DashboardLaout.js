@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
+import useVerifyRole from "../../Components/Button/Hooook/VerifyRole";
 import { AuthContext } from "../../contexts/AuthProvider";
 import Navbar from "../Navbar/Navbar";
 
 const DashboardLaout = () => {
   const { user } = useContext(AuthContext);
   // const isBuyer = (user?.role?==="buyer")
+  const [role] = useVerifyRole(user?.email);
+  console.log(role);
   return (
     <div>
       <Navbar></Navbar>
@@ -25,26 +28,33 @@ const DashboardLaout = () => {
               <Link to="/dashboard">My Appointment</Link>
             </li>
 
-            {user?.role === "buyer" && (
+            {role === "buyer" && (
               <>
                 <li>
                   <Link to="/dashboard/myorders">My Orders</Link>
                 </li>
               </>
             )}
-            {/* {isAdmin && (
+            {role === "seller" && (
               <>
                 <li>
-                  <Link to="dashboard/AllUsers">All users</Link>
+                  <Link to="/dashboard/myproducts">My Products</Link>
                 </li>
                 <li>
-                  <Link to="dashboard/addDoctor">Add Doctor</Link>
-                </li>
-                <li>
-                  <Link to="dashboard/managedoctors">Manage Doctors</Link>
+                  <Link to="/dashboard/addproduct">Add A Product</Link>
                 </li>
               </>
-            )} */}
+            )}
+            {role === "admin" && (
+              <>
+                <li>
+                  <Link to="/dashboard/allsellers">All Sellers</Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/allbuyers">All Buyers</Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
