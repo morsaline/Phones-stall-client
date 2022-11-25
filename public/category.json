@@ -82,5 +82,10 @@
     "email": "demo@gmail.com",
     "description": "This performances all good",
     "year_of_purchase": "2yr"
+  },
+  {
+    "name": "admin",
+    "email": "admin@gmail.com",
+    "role": "admin"
   }
 ]

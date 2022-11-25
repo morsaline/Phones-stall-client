@@ -35,17 +35,15 @@ const MyProduct = () => {
         setMyproducts(data);
       });
   }, [user?.email]);
-  // console.log(myproducts);
+  console.log(myproducts);
   return (
     <div>
       <h1 className="text-2xl  mb-5">My Products</h1>
       <div>
-        {myproducts?.map((product) => {
-          <Item key={product._id} product={product}></Item>;
-        })}
+        {myproducts?.map((product) => (
+          <Item key={product._id} product={product}></Item>
+        ))}
       </div>
-
-      <h1>ddd</h1>
     </div>
   );
 };
