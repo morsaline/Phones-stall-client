@@ -80,6 +80,22 @@ const CheckoutForm = ({ order }) => {
         bookingId: _id,
       };
       setProcessing(false);
+      fetch("http://localhost:5000/payments", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(payment),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.insertedId) {
+            setSuccess("Congrates! your payment successfuly done");
+            setTransactionId(paymentIntent.id);
+          }
+        })
+        .catch((err) => console.log(err));
     }
   };
 
