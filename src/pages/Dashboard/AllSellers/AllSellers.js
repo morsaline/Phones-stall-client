@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
+import TableCard from "../../../Shared/TableCard/TableCard";
 
 const AllSellers = () => {
   const { user } = useContext(AuthContext);
@@ -41,31 +42,12 @@ const AllSellers = () => {
           </thead>
           <tbody>
             {allsellers?.map((seller, idx) => (
-              <tr key={seller._id}>
-                <th>{idx + 1}</th>
-
-                <td>{seller.name}</td>
-                <td>{seller.email}</td>
-                {/* <td>{item.slot}</td> */}
-                {/* <td> */}
-                {/* {seller.price && !seller.paid && (
-                    <Link to={`/dashboard/payment/${seller._id}`}>
-                      <button className="btn btn-primary btn-xs">Pay</button>
-                    </Link>
-                  )} */}
-                <td>
-                  {" "}
-                  <button>delete</button>
-                </td>
-                <td>
-                  <button>Verify</button>
-                </td>
-                {/* 
-                  {item.price && item.paid && (
-                    <span className=" text-green-400 font-bold">Paid </span>
-                  )} */}
-                {/* </td> */}
-              </tr>
+              <TableCard
+                key={idx}
+                seller={seller}
+                idx={idx}
+                refetch={refetch}
+              ></TableCard>
             ))}
           </tbody>
         </table>
