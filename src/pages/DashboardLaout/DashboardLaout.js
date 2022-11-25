@@ -24,9 +24,9 @@ const DashboardLaout = () => {
         <div className="drawer-side">
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>
           <ul className="menu p-4 w-80  text-base-content">
-            <li>
+            {/* <li>
               <Link to="/dashboard">My Appointment</Link>
-            </li>
+            </li> */}
 
             {role === "buyer" && (
               <>
@@ -58,7 +58,6 @@ const DashboardLaout = () => {
           </ul>
         </div>
       </div>
-      {/* <Outlet /> */}
     </div>
   );
 };
