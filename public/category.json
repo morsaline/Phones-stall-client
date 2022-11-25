@@ -8,7 +8,10 @@
     "condition": "excelent",
     "location": "Dhaka",
     "post_date": "nov 24 2022",
-    "duration": "2years"
+    "duration": "2years",
+    "email": "demo@gmail.com",
+    "description": "This performances all good",
+    "year_of_purchase": "2yr"
   },
   {
     "model": "Iphone 11",
@@ -19,7 +22,10 @@
     "condition": "good",
     "location": "Dhaka",
     "post_date": "nov 24 2022",
-    "duration": "2years"
+    "duration": "2years",
+    "email": "demo@gmail.com",
+    "description": "This performances all good",
+    "year_of_purchase": "2yr"
   },
   {
     "model": "Samsung s10",
@@ -30,7 +36,10 @@
     "condition": "excelent",
     "location": "Rangpur",
     "post_date": "nov 24 2022",
-    "duration": "2years"
+    "duration": "2years",
+    "email": "demo@gmail.com",
+    "description": "This performances all good",
+    "year_of_purchase": "2yr"
   },
   {
     "model": "Samsung a20",
@@ -41,7 +50,10 @@
     "condition": "good",
     "location": "Dhaka",
     "post_date": "nov 24 2022",
-    "duration": "2years"
+    "duration": "2years",
+    "email": "demo@gmail.com",
+    "description": "This performances all good",
+    "year_of_purchase": "2yr"
   },
   {
     "model": "Nokia 8",
@@ -52,7 +64,10 @@
     "condition": "excelent",
     "location": "Dhaka",
     "post_date": "nov 24 2022",
-    "duration": "2years"
+    "duration": "2years",
+    "email": "demo@gmail.com",
+    "description": "This performances all good",
+    "year_of_purchase": "2yr"
   },
   {
     "model": "Nokia 10",
@@ -63,6 +78,9 @@
     "condition": "good",
     "location": "Dhaka",
     "post_date": "nov 24 2022",
-    "duration": "2years"
+    "duration": "2years",
+    "email": "demo@gmail.com",
+    "description": "This performances all good",
+    "year_of_purchase": "2yr"
   }
 ]
