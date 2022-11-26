@@ -1,8 +1,24 @@
 import React from "react";
+import toast from "react-hot-toast";
+import UseDelete from "../../../../Delete/DeleteHook";
 import MyProduct from "../MyProduct";
 
-const Item = ({ product }) => {
-  const { model, condition, duration, location, image } = product;
+const Item = ({ product, refetch }) => {
+  const { model, condition, duration, location, image, _id } = product;
+
+  const handleDelete = (id) => {
+    fetch(`http://localhost:5000/product/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          toast.success("deleted successfully");
+          refetch();
+        }
+        //   console.log(data);
+      });
+  };
   console.log(model);
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
@@ -10,7 +26,9 @@ const Item = ({ product }) => {
         <img src={image} alt="Shoes" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">{model}</h2>
+        <div>
+          <h2 className="card-title">{model}</h2>
+        </div>
         <p>condition:{condition}</p>
         <p>used:{duration}</p>
         <p>location:{location}</p>
@@ -22,9 +40,9 @@ const Item = ({ product }) => {
           <label
             // htmlFor="booking-modal"
             className="btn btn-primary text-white"
-            // onClick={() => setItem(product)}
+            onClick={() => handleDelete(_id)}
           >
-            Book Phone
+            Delete
           </label>
         </div>
       </div>

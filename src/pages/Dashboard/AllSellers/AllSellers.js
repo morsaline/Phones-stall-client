@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
 import TableCard from "../../../Shared/TableCard/TableCard";
 
 const AllSellers = () => {
   const { user } = useContext(AuthContext);
+
   const {
     data: allsellers = [],
     refetch,

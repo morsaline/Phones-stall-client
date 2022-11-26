@@ -1,11 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
+import UseVerifyRole from "../../../Components/Button/Hooook/VerifyRole";
 import { AuthContext } from "../../../contexts/AuthProvider";
 // import { useDelete } from "../../../Delete/Delete";
 import TableCard from "../../../Shared/TableCard/TableCard";
 
 const AllBuyers = () => {
   const { user } = useContext(AuthContext);
+  const [role] = UseVerifyRole(user?.email);
 
   const {
     data: allbuyers = [],
@@ -40,7 +42,7 @@ const AllBuyers = () => {
               <th>Name</th>
               <th>Email Address</th>
               <th>Delete here</th>
-              <th>Verify here</th>
+              {role === "seller" ? <th>Verify here</th> : <th></th>}
             </tr>
           </thead>
           <tbody>

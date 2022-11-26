@@ -1,14 +1,17 @@
 import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
-import useVerifyRole from "../../Components/Button/Hooook/VerifyRole";
+import UseVerifyRole from "../../Components/Button/Hooook/VerifyRole";
+// import useVerifyRole, {
+//   UseVerifyRole,
+// } from "../../Components/Button/Hooook/VerifyRole";
 import { AuthContext } from "../../contexts/AuthProvider";
 import Navbar from "../Navbar/Navbar";
 
 const DashboardLaout = () => {
   const { user } = useContext(AuthContext);
   // const isBuyer = (user?.role?==="buyer")
-  const [role] = useVerifyRole(user?.email);
-  console.log(role);
+  const [role] = UseVerifyRole(user?.email);
+  // console.log(role);
   return (
     <div>
       <Navbar></Navbar>

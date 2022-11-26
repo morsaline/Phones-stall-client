@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { UseAuthToken } from "../../Components/Button/Hooook/UseAuthToken";
 // import { UseToken } from "../../ApiServices/auth";
 // import { getUserToken } from '../../ApiServices/auth';
 import { AuthContext } from "../../contexts/AuthProvider";
@@ -18,10 +19,11 @@ const SignUp = () => {
   const navigate = useNavigate();
   const [createdUserEmail, setCreatedUserEmail] = useState("");
   //   const [token] = UseToken(createdUserEmail);
+  const [token] = UseAuthToken(createdUserEmail);
 
-  //   if (token) {
-  //     navigate("/");
-  //   }
+  if (token) {
+    navigate("/");
+  }
 
   const handleSignUp = (data) => {
     setSignUPError("");
@@ -49,8 +51,8 @@ const SignUp = () => {
     signInWithGoogle().then((result) => {
       console.log(result.user);
       const user = result.user;
-      toast.success("User Created Successfully.");
       saveUser(user?.displayName, user?.email, "buyer");
+
       // setToken(result.user);
       // setLoading(false);
       // navigate(from, { replace: true });
@@ -72,6 +74,10 @@ const SignUp = () => {
         setCreatedUserEmail(email);
         // getUserToken(email).then(() => {
         // 	navigate('/');
+        // // });git
+        // UseAuthToken(email).then(() => {
+        //   toast.success("User Created Successfully.");
+        //   navigate("/");
         // });
       })
       .catch((err) => console.log(err));

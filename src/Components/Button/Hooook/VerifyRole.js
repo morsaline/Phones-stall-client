@@ -2,7 +2,7 @@ import { useState } from "react";
 
 // import { useEffect, useState } from "react";
 
-const useVerifyRole = (email) => {
+const UseVerifyRole = (email) => {
   const [role, setRole] = useState("");
   const [isRoleLoading, setIsRoleLoading] = useState(true);
   fetch(`http://localhost:5000/users/role/${email}`)
@@ -13,6 +13,30 @@ const useVerifyRole = (email) => {
     });
   return [role, isRoleLoading];
 };
+
+// import { useEffect, useState } from "react";
+
+// const UseVerifyRole = (email) => {
+//   const [role, setRole] = useState("");
+
+//   useEffect(() => {
+//     if (email) {
+//       fetch(`http://localhost:5000/users/role/${email}`)
+//         .then((res) => res.json())
+//         .then((data) => {
+//           if (data.role) {
+//             // localStorage.setItem("authToken", data.accessToken);
+//             setRole(data.role);
+//           }
+//         })
+//         .catch((err) => console.log(err));
+//     }
+//   }, [email]);
+
+//   return [role];
+// };
+
+// export { UseVerifyRole };
 
 // const useVerifyRole = (email) => {
 
@@ -30,4 +54,4 @@ const useVerifyRole = (email) => {
 
 // export default useAdmin;
 
-export default useVerifyRole;
+export default UseVerifyRole;

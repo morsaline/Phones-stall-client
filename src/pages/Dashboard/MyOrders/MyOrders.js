@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
 
 const MyOrders = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   const {
     data: myorders = [],
     refetch,
@@ -14,8 +14,16 @@ const MyOrders = () => {
     queryFn: async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/myorders/${user?.email}`
+          `http://localhost:5000/myorders/${user?.email}`,
+          {
+            headers: {
+              authorization: `bearer ${localStorage.getItem("authToken")}`,
+            },
+          }
         );
+        if (res.status === 403 || res.status === 401) {
+          logout();
+        }
         const data = await res.json();
         return data;
         // console.log(data);
@@ -24,6 +32,10 @@ const MyOrders = () => {
       }
     },
   });
+  if (isLoading) {
+    console.log(user?.email);
+    return <h1>Loadding....{}</h1>;
+  }
   return (
     <div>
       <h1 className="text-2xl  mb-5">My Orders</h1>
