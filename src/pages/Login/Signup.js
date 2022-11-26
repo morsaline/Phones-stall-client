@@ -12,7 +12,8 @@ const SignUp = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { createUser, updateUser, signInWithGoogle } = useContext(AuthContext);
+  const { createUser, updateUser, signInWithGoogle, user } =
+    useContext(AuthContext);
   const [signUpError, setSignUPError] = useState("");
   const navigate = useNavigate();
   const [createdUserEmail, setCreatedUserEmail] = useState("");
