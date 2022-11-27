@@ -33,31 +33,74 @@ const DashboardLaout = () => {
 
             {role === "buyer" && (
               <>
+                <li className="border-b-2 rounded-xl">
+                  <Link to="/dashboard">Dashboard</Link>
+                </li>
                 <li>
-                  <Link to="/dashboard/myorders">My Orders</Link>
+                  <Link
+                    className="border-b-2 rounded-xl"
+                    to="/dashboard/myorders"
+                  >
+                    My Orders
+                  </Link>
                 </li>
               </>
             )}
             {role === "seller" && (
               <>
                 <li>
-                  <Link to="/dashboard/myproducts">My Products</Link>
+                  <Link className="border-b-2 rounded-xl" to="/dashboard">
+                    Dashboard
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/dashboard/addproduct">Add A Product</Link>
+                  <Link
+                    className="border-b-2 rounded-xl"
+                    to="/dashboard/myproducts"
+                  >
+                    My Products
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="border-b-2 rounded-xl"
+                    to="/dashboard/addproduct"
+                  >
+                    Add A Product
+                  </Link>
                 </li>
               </>
             )}
             {role === "admin" && (
               <>
                 <li>
-                  <Link to="/dashboard/allsellers">All Sellers</Link>
+                  <Link className="border-b-2 rounded-xl" to="/dashboard">
+                    Dashboard
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/dashboard/allbuyers">All Buyers</Link>
+                  <Link
+                    className="border-b-2 rounded-xl"
+                    to="/dashboard/allsellers"
+                  >
+                    All Sellers
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/dashboard/reporteditems">All Reported Items</Link>
+                  <Link
+                    className="border-b-2 rounded-xl"
+                    to="/dashboard/allbuyers"
+                  >
+                    All Buyers
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="border-b-2 rounded-xl"
+                    to="/dashboard/reporteditems"
+                  >
+                    All Reported Items
+                  </Link>
                 </li>
               </>
             )}

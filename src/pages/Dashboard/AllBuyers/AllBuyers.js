@@ -36,13 +36,13 @@ const AllBuyers = () => {
         <table className="table w-full">
           {/* <!-- head --> */}
           <thead>
-            <tr className="border-b-2">
+            <tr className="border-b-2 border-l-2 border-r-2 border-t-2">
               <th></th>
               {/* <th>Name</th> */}
-              <th>Name</th>
-              <th>Email Address</th>
-              <th>Delete here</th>
-              {role === "seller" ? <th>Verify here</th> : <th></th>}
+              <th className="border-r-2">Name</th>
+              <th className="border-r-2">Email Address</th>
+              <th className="border-r-2">Delete here</th>
+              {role === "seller" ? <th>Verify here</th> : ""}
             </tr>
           </thead>
           <tbody>

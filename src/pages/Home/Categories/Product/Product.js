@@ -10,7 +10,8 @@ const Product = () => {
   console.log(products);
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <h1 className="text-center my-5 font-bold">{item?.model}</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
         {products.map((product) => (
           <Card key={product._id} product={product} setItem={setItem}></Card>
         ))}

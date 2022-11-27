@@ -5,6 +5,7 @@ import AddProduct from "../../pages/Dashboard/AddProduct/AddProduct";
 import AllBuyers from "../../pages/Dashboard/AllBuyers/AllBuyers";
 import AllReportedItem from "../../pages/Dashboard/AllReportedItem/AllReportedItem";
 import AllSellers from "../../pages/Dashboard/AllSellers/AllSellers";
+import DashboardMain from "../../pages/Dashboard/DashboardMain/DashboardMain";
 import MyOrders from "../../pages/Dashboard/MyOrders/MyOrders";
 import MyProduct from "../../pages/Dashboard/MyProduct/MyProduct";
 import Payment from "../../pages/Dashboard/Payment/Payment";
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
     ),
     children: [
       // { path: "/dashboard", element: <h1>welconme to dashboard</h1> },
+      {
+        path: "/dashboard",
+        element: <DashboardMain></DashboardMain>,
+      },
       {
         path: "/dashboard/myorders",
         element: <MyOrders></MyOrders>,

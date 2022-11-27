@@ -45,18 +45,18 @@ const AllReportedItem = () => {
         <table className="table w-full">
           {/* <!-- head --> */}
           <thead>
-            <tr className="border-b-2 my-3">
+            <tr className="border-b-2 my-3 border-t-2 border-l-2 border-r-2">
               <th></th>
               {/* <th>Name</th> */}
-              <th>Item Photo</th>
-              <th>Title</th>
-              <th>Report Item</th>
+              <th className="border-r-2">Item Photo</th>
+              <th className="border-r-2">Title</th>
+              <th className="border-r-2">Report Item</th>
               <th>Delete Here</th>
             </tr>
           </thead>
           <tbody>
             {reporteditem?.map((item, idx) => (
-              <tr key={item._id} className="border-b-2">
+              <tr key={item._id} className="border-b-2 border-l-2 border-r-2">
                 <th>{idx + 1}</th>
                 <td>
                   <img src={item.image} className="w-12 h-15" alt="" />

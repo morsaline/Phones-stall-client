@@ -29,7 +29,7 @@ const TableCard = ({ seller, idx, refetch }) => {
   };
 
   return (
-    <tr className="border-b-2">
+    <tr className="border-b-2 border-l-2 border-r-2 ">
       <th>{idx + 1}</th>
 
       <td className="flex gap-2">

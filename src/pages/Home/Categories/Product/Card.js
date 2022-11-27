@@ -23,11 +23,11 @@ const Card = ({ product, setItem }) => {
       });
   };
   return (
-    <div className="card w-96 bg-base-100 shadow-xl  border p-4">
+    <div className="card mx-auto bg-base-100 shadow-xl  border p-4 w-[300px]">
       <figure>
         <img className="h-[300px] rounded" src={image} alt="Shoes" />
       </figure>
-      <div className="card-body">
+      <div className="card-body p-0">
         <h2 className="card-title my-2">{model}</h2>
         <p className=" flex">
           Sellers Name : {name}{" "}
