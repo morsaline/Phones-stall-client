@@ -33,9 +33,12 @@ const Categories = () => {
   //   console.log(brands);
   return (
     <div>
+      <p className="text-center p-5 border-b w-1/2 mx-auto font-bold text-3xl my-3">
+        Categories
+      </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {brands.map((brand, i) => (
-          <h2 key={i} brand={brand} className="p-10 border rounded-lg ">
+          <h2 className="p-10 border rounded-lg " key={i} brand={brand}>
             {" "}
             <Link to={`/phones/${brand}`}>{brand}</Link>
           </h2>

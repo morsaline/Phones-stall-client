@@ -8,7 +8,7 @@ import { FaCheckCircle } from "react-icons/fa";
 const Card = ({ product, setItem }) => {
   const { user } = useContext(AuthContext);
   const [role] = UseVerifyRole(user?.email);
-  const [status] = UseVerifyStatus(user?.email);
+
   console.log(product);
   const { brand, condition, duration, image, location, model, _id, name } =
     product;
@@ -23,20 +23,20 @@ const Card = ({ product, setItem }) => {
       });
   };
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="card w-96 bg-base-100 shadow-xl  border p-4">
       <figure>
-        <img src={image} alt="Shoes" />
+        <img className="h-[300px] rounded" src={image} alt="Shoes" />
       </figure>
       <div className="card-body">
         <h2 className="card-title my-2">{model}</h2>
         <p className=" flex">
           Sellers Name : {name}{" "}
-          {status === "verified" ? (
+          {product?.status === "verified" ? (
             <>
               <FaCheckCircle className="text-primary ml-2"></FaCheckCircle>
             </>
           ) : (
-            <>""</>
+            <></>
           )}
         </p>
         <p>condition:{condition}</p>
@@ -46,7 +46,7 @@ const Card = ({ product, setItem }) => {
         <p>Original Price:{product.original_price}</p>
         <p>Resale Price:{product.resale_price}</p>
 
-        {status === "verified" ? (
+        {product?.status === "verified" ? (
           <>
             <p className="text-success my-3">Seller is Verified By Admin</p>
           </>

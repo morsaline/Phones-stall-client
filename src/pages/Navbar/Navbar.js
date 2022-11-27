@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { FaUserAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
@@ -25,9 +26,6 @@ const Navbar = () => {
           <li>
             <Link to="/dashboard">Dashboard</Link>
           </li>
-          <li onClick={handleLogOut}>
-            <Link>Logout</Link>
-          </li>
         </>
       ) : (
         <>
@@ -37,11 +35,27 @@ const Navbar = () => {
           </li>
         </>
       )}
+      <li>
+        <p>{user?.email}</p>
+      </li>
+      <li>
+        <p>{<FaUserAlt className="text-white bg-white"></FaUserAlt>}</p>
+      </li>
+      {user ? (
+        <>
+          {" "}
+          <li onClick={handleLogOut}>
+            <Link>Logout</Link>
+          </li>
+        </>
+      ) : (
+        ""
+      )}
     </React.Fragment>
   );
 
   return (
-    <div className="navbar bg-base-100 flex justify-between">
+    <div className="navbar bg-base-100 flex justify-between border border-bottom rounded-2xl">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -68,11 +82,11 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl">
-          PhoneGraphy
+          Phones Stall
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal p-0">{menuItems}</ul>
+        <ul className="menu menu-horizontal p-0  rounded-lg">{menuItems}</ul>
       </div>
       <label
         tabIndex={2}

@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import UseVerifyStatus from "../../../Components/Button/Hooook/UseVerifyStatus";
 import { AuthContext } from "../../../contexts/AuthProvider";
 // import AuthContext from "../../../contexts/AuthProvider";
 const AddProduct = () => {
   //   const { user } = useContext(AuthContext);
   const { user } = useContext(AuthContext);
+  const [status] = UseVerifyStatus(user?.email);
+  const initial = status;
   const handleAddProduct = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -24,11 +27,13 @@ const AddProduct = () => {
     const post_date = form.postdate.value;
     const year_of_purchase = form.yearofpurchase.value;
     const image = form.photourl.value;
+    const status = initial;
     const product = {
       email,
       phone,
       name,
       model,
+      status,
       //   price,
       location,
       condition,
