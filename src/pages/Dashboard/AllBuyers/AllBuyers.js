@@ -31,12 +31,12 @@ const AllBuyers = () => {
 
   return (
     <div>
-      <h1 className="text-2xl  mb-5">All Sellers</h1>
+      <h1 className="text-2xl  mb-5 my-4 text-center font-bold">All Buyers</h1>
       <div className="overflow-x-auto">
         <table className="table w-full">
           {/* <!-- head --> */}
           <thead>
-            <tr>
+            <tr className="border-b-2">
               <th></th>
               {/* <th>Name</th> */}
               <th>Name</th>

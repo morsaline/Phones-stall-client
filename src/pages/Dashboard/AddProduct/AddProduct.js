@@ -70,10 +70,12 @@ const AddProduct = () => {
   };
   return (
     <div>
-      <h1 className="text-center text-5xl my-5">Add A Product</h1>
+      <h1 className="text-2xl  mb-5 text-center font-bold my-5">
+        Add A Product
+      </h1>
       <form
         onSubmit={handleAddProduct}
-        className="grid grid-cols-1 gap-3 mt-10 w-1/2 mx-auto my-6"
+        className="grid grid-cols-1 gap-3 mt-10 w-1/2 mx-auto  border rounded p-3"
       >
         <label>Item Name:</label>
         <input

@@ -16,12 +16,7 @@ const MyProduct = () => {
     queryFn: async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/myproducts/${user?.email}`,
-          {
-            headers: {
-              authorization: `bearer ${localStorage.getItem("authToken")}`,
-            },
-          }
+          `http://localhost:5000/myproducts/${user?.email}`
         );
         if (res.status === 403 || res.status === 401) {
           logout();
@@ -47,8 +42,8 @@ const MyProduct = () => {
   // console.log(myproducts);
   return (
     <div>
-      <h1 className="text-2xl  mb-5">My Products</h1>
-      <div>
+      <h1 className="text-2xl  mb-5 text-center font-bold my-3">My Products</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {myproducts?.map((product) => (
           <Item key={product._id} product={product} refetch={refetch}></Item>
         ))}

@@ -29,33 +29,40 @@ const TableCard = ({ seller, idx, refetch }) => {
   };
 
   return (
-    <tr>
+    <tr className="border-b-2">
       <th>{idx + 1}</th>
 
       <td className="flex gap-2">
-        {seller.name}{" "}
+        {seller.name}
         {seller.status === "verified" ? (
           <>
             <FaCheckCircle className="text-primary mt-2"></FaCheckCircle>
           </>
         ) : (
-          <>""</>
+          <></>
         )}
       </td>
       <td>{seller.email}</td>
 
       <td>
         {" "}
-        <button onClick={() => handleDelete(seller)}>delete</button>
+        <button
+          className="border px-2 rounded-xl hover:bg-slate-100 hover:text-black"
+          onClick={() => handleDelete(seller)}
+        >
+          Delete
+        </button>
       </td>
       {seller.role === "seller" ? (
         <>
           {seller.status === "verified" ? (
-            <button className="mt-3 text-center">verified</button>
+            <button className="border px-2 rounded-xl hover:bg-slate-100 hover:text-black">
+              Verified
+            </button>
           ) : (
             <td>
               <button
-                className="mr-5 text-center"
+                className="border px-2 rounded-xl hover:bg-slate-100 hover:text-black"
                 onClick={() => handleVerify(seller._id)}
               >
                 unverified

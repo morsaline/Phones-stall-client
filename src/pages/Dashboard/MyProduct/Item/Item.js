@@ -21,9 +21,9 @@ const Item = ({ product, refetch }) => {
   };
   console.log(model);
   return (
-    <div className="card w-96 bg-base-100 shadow-xl">
+    <div className="card w-96 bg-base-100 shadow-xl border">
       <figure>
-        <img src={image} alt="Shoes" />
+        <img className="h-[500px]" src={image} alt="Shoes" />
       </figure>
       <div className="card-body">
         <div className="flex">

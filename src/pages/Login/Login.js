@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { UseAuthToken } from "../../Components/Button/Hooook/UseAuthToken";
 // import { UseToken } from "../../ApiServices/auth";
 // import { getUserToken } from '../../ApiServices/auth';
 import { AuthContext } from "../../contexts/AuthProvider";
@@ -15,14 +16,17 @@ const Login = () => {
   const { signin, signInWithGoogle, setLoading } = useContext(AuthContext);
   const [loginError, setLoginError] = useState("");
   const [loginUserEmail, setLoginUserEmail] = useState("");
+  const [createdUserEmail, setCreatedUserEmail] = useState("");
   //   const [token] = UseToken(loginUserEmail);
   const location = useLocation();
   const navigate = useNavigate();
+  const [token] = UseAuthToken(loginUserEmail);
 
   const from = location.state?.from?.pathname || "/";
-  //   if (token) {
-  //     navigate(from, { replace: true });
-  // //   }
+
+  if (token) {
+    navigate(from, { replace: true });
+  }
 
   const handleLogin = (data) => {
     console.log(data);
@@ -33,9 +37,9 @@ const Login = () => {
         console.log(user);
         // console.log(user);
         // getUserToken(data.email).then((data) => {
-        // 	if (data) {
-        // 		navigate('/');
-        // 	}
+        if (data) {
+          navigate("/");
+        }
         // });
         setLoginUserEmail(data.email);
       })
@@ -59,16 +63,11 @@ const Login = () => {
   //     // navigate(from, { replace: true });
   // //   });
   // };
-  const handleGoogle = () => {
-    signInWithGoogle().then((result) => {
-      const user = result.user;
-      toast.success("sign in complete");
-    });
-  };
+
   return (
-    <div className="h-[800px] flex justify-center items-center">
-      <div className="w-96 p-7">
-        <h2 className="text-xl text-center">Login</h2>
+    <div className="h-[800px] flex justify-center items-center ">
+      <div className="w-96 p-7 border rounded">
+        <h2 className="text-xl text-center border-b-2 p-3 font-bold">LOGIN</h2>
         <form onSubmit={handleSubmit(handleLogin)}>
           <div className="form-control w-full max-w-xs">
             <label className="label">
@@ -120,15 +119,11 @@ const Login = () => {
           </div>
         </form>
         <p>
-          New to Doctors Portal{" "}
-          <Link className="text-secondary" to="/signup">
+          New to Phones Stall{" "}
+          <Link className="text-primary" to="/signup">
             Create new Account
           </Link>
         </p>
-        <div className="divider">OR</div>
-        <button onClick={handleGoogle} className="btn btn-outline w-full">
-          CONTINUE WITH GOOGLE
-        </button>
       </div>
     </div>
   );

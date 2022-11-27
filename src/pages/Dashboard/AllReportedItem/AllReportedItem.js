@@ -38,12 +38,14 @@ const AllReportedItem = () => {
   };
   return (
     <div>
-      <h1 className="text-2xl  mb-5">My Orders</h1>
+      <h1 className="text-2xl  mb-5 font-bold text-center my-3">
+        All Reported Items
+      </h1>
       <div className="overflow-x-auto">
         <table className="table w-full">
           {/* <!-- head --> */}
           <thead>
-            <tr>
+            <tr className="border-b-2 my-3">
               <th></th>
               {/* <th>Name</th> */}
               <th>Item Photo</th>
@@ -54,7 +56,7 @@ const AllReportedItem = () => {
           </thead>
           <tbody>
             {reporteditem?.map((item, idx) => (
-              <tr key={item._id}>
+              <tr key={item._id} className="border-b-2">
                 <th>{idx + 1}</th>
                 <td>
                   <img src={item.image} className="w-12 h-15" alt="" />
@@ -72,8 +74,11 @@ const AllReportedItem = () => {
                 {/* <td>{item.slot}</td> */}
                 <td>
                   {" "}
-                  <button onClick={() => handleReportDelete(item._id)}>
-                    delete
+                  <button
+                    className="border px-2 rounded-xl hover:bg-slate-100 hover:text-black"
+                    onClick={() => handleReportDelete(item._id)}
+                  >
+                    Delete
                   </button>
                 </td>
               </tr>
