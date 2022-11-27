@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import ErrorElement from "../../ErrorElement/ErrorElement";
 import Main from "../../Layout/Main/Main";
+import Blogs from "../../pages/Blogs/Blogs";
 import AddProduct from "../../pages/Dashboard/AddProduct/AddProduct";
 import AllBuyers from "../../pages/Dashboard/AllBuyers/AllBuyers";
 import AllReportedItem from "../../pages/Dashboard/AllReportedItem/AllReportedItem";
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup></Signup>,
+      },
+      {
+        path: "/blog",
+        element: <Blogs></Blogs>,
       },
       {
         path: "/phones/:brand",

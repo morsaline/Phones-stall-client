@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
+import SmallLoader from "../../../loader/SmallLoader/SmallLoader";
 
 const MyOrders = () => {
   const { user, logout } = useContext(AuthContext);
@@ -34,7 +35,7 @@ const MyOrders = () => {
   });
   if (isLoading) {
     console.log(user?.email);
-    return <h1>Loadding....{}</h1>;
+    return <SmallLoader></SmallLoader>;
   }
   return (
     <div>

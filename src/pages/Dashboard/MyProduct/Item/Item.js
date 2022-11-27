@@ -19,9 +19,22 @@ const Item = ({ product, refetch }) => {
         //   console.log(data);
       });
   };
+  const handleAdvertise = (id) => {
+    fetch(`http://localhost:5000/advertise/${id}`, {
+      method: "PUT",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          toast.success("advertise comlepted");
+          refetch();
+        }
+      });
+  };
   console.log(model);
   return (
-    <div className="card w-96 bg-base-100 shadow-xl border">
+    <div className="card w-[300px] mx-auto bg-base-100 shadow-xl border">
       <figure>
         <img className="h-[500px]" src={image} alt="Shoes" />
       </figure>
@@ -52,6 +65,13 @@ const Item = ({ product, refetch }) => {
             onClick={() => handleDelete(_id)}
           >
             Delete
+          </label>
+          <label
+            // htmlFor="booking-modal"
+            className="btn btn-primary text-white"
+            onClick={() => handleAdvertise(_id)}
+          >
+            UnAdvertise
           </label>
         </div>
       </div>

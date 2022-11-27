@@ -1,10 +1,12 @@
 import React, { useContext } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import UseVerifyStatus from "../../../Components/Button/Hooook/UseVerifyStatus";
 import { AuthContext } from "../../../contexts/AuthProvider";
 // import AuthContext from "../../../contexts/AuthProvider";
 const AddProduct = () => {
   //   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [status] = UseVerifyStatus(user?.email);
   const initial = status;
@@ -59,8 +61,10 @@ const AddProduct = () => {
         console.log(data);
         if (data.acknowledged) {
           //   setItem(null);
+          form.reset();
 
           toast.success("Add successfully");
+          navigate("/dashboard/myproducts");
           //   refetch();
         } else {
           toast.error(data.message);
@@ -75,7 +79,7 @@ const AddProduct = () => {
       </h1>
       <form
         onSubmit={handleAddProduct}
-        className="grid grid-cols-1 gap-3 mt-10 w-1/2 mx-auto  border rounded p-3"
+        className="grid grid-cols-1 gap-3 mt-10 lg:w-1/2 mx-auto  border rounded p-3"
       >
         <label>Item Name:</label>
         <input

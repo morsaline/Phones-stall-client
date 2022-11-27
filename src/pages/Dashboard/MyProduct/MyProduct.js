@@ -29,17 +29,7 @@ const MyProduct = () => {
       }
     },
   });
-  // console.log(myproducts);
-  // const [myproducts, setMyproducts] = useState([]);
-  // useEffect(() => {
-  //   fetch(`http://localhost:5000/myproducts/${user?.email}`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       // console.log(data);
-  //       setMyproducts(data);
-  //     });
-  // }, [user?.email]);
-  // console.log(myproducts);
+  
   return (
     <div>
       <h1 className="text-2xl  mb-5 text-center font-bold my-3">My Products</h1>
