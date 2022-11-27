@@ -8,7 +8,7 @@ import {
 } from "@stripe/react-stripe-js";
 
 const CheckoutForm = ({ order }) => {
-  const { name, itemName, email, price, _id } = order;
+  const { name, itemName, email, price, _id, productId } = order;
 
   const [cardError, setCardError] = useState("");
   const [success, setSuccess] = useState("");
@@ -78,6 +78,7 @@ const CheckoutForm = ({ order }) => {
         transactionId: paymentIntent.id,
         email,
         bookingId: _id,
+        productId,
       };
       setProcessing(false);
       fetch("http://localhost:5000/payments", {

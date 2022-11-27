@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import ErrorElement from "../../ErrorElement/ErrorElement";
 import Main from "../../Layout/Main/Main";
 import AddProduct from "../../pages/Dashboard/AddProduct/AddProduct";
 import AllBuyers from "../../pages/Dashboard/AllBuyers/AllBuyers";
@@ -17,6 +18,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 const router = createBrowserRouter([
   {
     path: "/",
+    errorElement: <ErrorElement></ErrorElement>,
     element: <Main></Main>,
     children: [
       {
@@ -46,6 +48,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
+    errorElement: <ErrorElement></ErrorElement>,
     element: (
       <PrivateRoute>
         <DashboardLaout></DashboardLaout>

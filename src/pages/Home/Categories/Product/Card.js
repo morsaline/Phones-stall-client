@@ -62,20 +62,14 @@ const Card = ({ product, setItem }) => {
           >
             Book Phone
           </label>
-          {role === "buyer" ? (
-            <>
-              {" "}
-              <label
-                // htmlFor="booking-modal"
-                className="btn btn-primary text-white"
-                onClick={() => handleReport(_id)}
-              >
-                Report product
-              </label>
-            </>
-          ) : (
-            <></>
-          )}
+
+          <label
+            // htmlFor="booking-modal"
+            className="btn btn-primary text-white"
+            onClick={() => handleReport(_id)}
+          >
+            Report product
+          </label>
         </div>
       </div>
     </div>

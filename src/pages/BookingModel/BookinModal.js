@@ -4,7 +4,7 @@ import { AuthContext } from "../../contexts/AuthProvider";
 
 const BookinModal = ({ item, setItem }) => {
   const { user } = useContext(AuthContext);
-  const { resale_price, model, image } = item;
+  const { resale_price, model, image, _id } = item;
   console.log(item);
 
   const handleBooking = (event) => {
@@ -25,6 +25,7 @@ const BookinModal = ({ item, setItem }) => {
       itemName,
       price,
       meetLocation,
+      productId: _id,
     };
 
     fetch("http://localhost:5000/bookings", {

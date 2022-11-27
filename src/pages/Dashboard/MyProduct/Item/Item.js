@@ -26,9 +26,9 @@ const Item = ({ product, refetch }) => {
         <img className="h-[500px]" src={image} alt="Shoes" />
       </figure>
       <div className="card-body">
-        <div className="flex">
+        <div className="flex justify-between">
           <h2 className="card-title">{model}</h2>
-          {product?.transactionId === _id ? (
+          {product?.sold === true ? (
             <>
               <button>sold</button>
             </>
