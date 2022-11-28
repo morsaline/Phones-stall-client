@@ -47,7 +47,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) => {
-          return fetch(`http://localhost:5000/phones/${params.brand}`);
+          return fetch(
+            `https://serverside-sigma.vercel.app/phones/${params.brand}`
+          );
         },
       },
     ],
@@ -94,7 +96,9 @@ const router = createBrowserRouter([
         path: "/dashboard/payment/:id",
         element: <Payment></Payment>,
         loader: ({ params }) => {
-          return fetch(`http://localhost:5000/orders/${params.id}`);
+          return fetch(
+            `https://serverside-sigma.vercel.app/orders/${params.id}`
+          );
         },
       },
     ],

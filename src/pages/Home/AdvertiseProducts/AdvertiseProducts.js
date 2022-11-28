@@ -21,7 +21,7 @@ const AdvertiseProducts = () => {
     queryFn: async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/advertisedproducts`,
+          `https://serverside-sigma.vercel.app/advertisedproducts`,
           {
             headers: {
               authorization: `Bearer ${localStorage.getItem("authtoken")},
@@ -41,7 +41,7 @@ const AdvertiseProducts = () => {
       }
     },
   });
-  if (advertisedproducts === 0) {
+  if (advertisedproducts.length === 0) {
     return;
   }
 
@@ -51,7 +51,9 @@ const AdvertiseProducts = () => {
   console.log(advertisedproducts);
   return (
     <div>
-      <h1 className="text-center text-2xl my-5">Advertise Products</h1>
+      {advertisedproducts && (
+        <h1 className="text-center text-2xl my-5">Advertise Products</h1>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {advertisedproducts.map((product) => (
           <AddvertiseCard key={product._id} product={product}></AddvertiseCard>

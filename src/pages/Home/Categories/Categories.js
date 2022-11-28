@@ -11,7 +11,7 @@ const Categories = () => {
     queryKey: ["brands"],
     queryFn: async () => {
       try {
-        const res = await fetch(`http://localhost:5000/brands`);
+        const res = await fetch(`https://serverside-sigma.vercel.app/brands`);
         const data = await res.json();
         return data;
         // console.log(data);
@@ -26,7 +26,7 @@ const Categories = () => {
   //   const [brands, setBrands] = useState([]);
 
   //   useEffect(() => {
-  //     fetch("http://localhost:5000/brands")
+  //     fetch("https://serverside-sigma.vercel.app/brands")
   //       .then((res) => res.json())
   //       .then((data) => setBrands(data));
   //   }, []);

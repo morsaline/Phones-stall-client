@@ -11,7 +11,7 @@ const PrivateRoute = ({ children }) => {
     return <MainLoader></MainLoader>;
   }
 
-  if (user && user.uid && user.email) {
+  if (user && user.uid) {
     return children;
   }
 

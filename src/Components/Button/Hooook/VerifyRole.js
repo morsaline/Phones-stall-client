@@ -5,7 +5,7 @@ import { useState } from "react";
 const UseVerifyRole = (email) => {
   const [role, setRole] = useState("");
   const [isRoleLoading, setIsRoleLoading] = useState(true);
-  fetch(`http://localhost:5000/users/role/${email}`)
+  fetch(`https://serverside-sigma.vercel.app/users/role/${email}`)
     .then((res) => res.json())
     .then((data) => {
       //   console.log(data);
@@ -21,7 +21,7 @@ const UseVerifyRole = (email) => {
 
 //   useEffect(() => {
 //     if (email) {
-//       fetch(`http://localhost:5000/users/role/${email}`)
+//       fetch(`https://serverside-sigma.vercel.app/users/role/${email}`)
 //         .then((res) => res.json())
 //         .then((data) => {
 //           if (data.role) {
@@ -41,7 +41,7 @@ const UseVerifyRole = (email) => {
 // const useVerifyRole = (email) => {
 
 //   useEffect(() => {
-//     fetch(`http://localhost:5000/users/role/${email}`)
+//     fetch(`https://serverside-sigma.vercel.app/users/role/${email}`)
 //       .then((res) => res.json())
 //       .then((data) => {
 //         setRole(data.role);

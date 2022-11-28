@@ -15,7 +15,7 @@ const MyOrders = () => {
     queryFn: async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/myorders/${user?.email}`,
+          `https://serverside-sigma.vercel.app/myorders/${user?.email}`,
           {
             headers: {
               authorization: `bearer ${localStorage.getItem("authToken")}`,

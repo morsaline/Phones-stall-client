@@ -20,7 +20,7 @@ const CheckoutForm = ({ order }) => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://serverside-sigma.vercel.app/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ price }),
@@ -81,7 +81,7 @@ const CheckoutForm = ({ order }) => {
         productId,
       };
       setProcessing(false);
-      fetch("http://localhost:5000/payments", {
+      fetch("https://serverside-sigma.vercel.app/payments", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -101,8 +101,11 @@ const CheckoutForm = ({ order }) => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
+    <div className="mx-auto my-5">
+      <form
+        onSubmit={handleSubmit}
+        className="border p-5 rounded my-5 w-full text-white "
+      >
         <CardElement
           options={{
             style: {
@@ -123,7 +126,7 @@ const CheckoutForm = ({ order }) => {
           type="submit "
           className={`btn ${
             stripe && clientSecret && "btn-warning"
-          } btn-xs my-3`}
+          } btn-xs my-3 w-1/2`}
           disabled={!stripe || !clientSecret || processing}
         >
           {processing ? "processing" : "Pay"}
@@ -136,7 +139,7 @@ const CheckoutForm = ({ order }) => {
           <p>Transaction Id : {transactionId}</p>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

@@ -28,7 +28,7 @@ const BookinModal = ({ item, setItem }) => {
       productId: _id,
     };
 
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://serverside-sigma.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -13,9 +13,10 @@ const SignUp = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { createUser, updateUser, signInWithGoogle, user } =
+  const { createUser, updateUser, signInWithGoogle, setLoading } =
     useContext(AuthContext);
   const [signUpError, setSignUPError] = useState("");
+  const [userLoading, setUserLoading] = useState(false);
   const navigate = useNavigate();
   const [createdUserEmail, setCreatedUserEmail] = useState("");
   //   const [token] = UseToken(createdUserEmail);
@@ -39,20 +40,29 @@ const SignUp = () => {
         updateUser(userInfo)
           .then(() => {
             saveUser(data.name, data.email, data.role);
+            setUserLoading(true);
+            toast.success("user Ccreated succesfully");
+            navigate("/");
           })
           .catch((err) => console.log(err));
       })
       .catch((error) => {
         console.log(error);
         setSignUPError(error.code);
+      })
+      .finally(() => {
+        setLoading(false);
+        setUserLoading(false);
       });
   };
   const handleGoogle = () => {
+    setUserLoading(true);
     signInWithGoogle().then((result) => {
       console.log(result.user);
       const user = result.user;
       saveUser(user?.displayName, user?.email, "buyer");
-
+      toast.success("user Ccreated succesfully");
+      navigate("/");
       // setToken(result.user);
       // setLoading(false);
       // navigate(from, { replace: true });
@@ -61,7 +71,7 @@ const SignUp = () => {
 
   const saveUser = (name, email, role) => {
     const user = { name, email, role };
-    fetch("http://localhost:5000/users", {
+    fetch("https://serverside-sigma.vercel.app/users", {
       method: "put",
       headers: {
         "content-type": "application/json",
@@ -79,6 +89,7 @@ const SignUp = () => {
         //   toast.success("User Created Successfully.");
         //   navigate("/");
         // });
+        navigate("/");
       })
       .catch((err) => console.log(err));
   };

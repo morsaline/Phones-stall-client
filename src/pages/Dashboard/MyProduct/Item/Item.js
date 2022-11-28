@@ -7,7 +7,7 @@ const Item = ({ product, refetch }) => {
   const { model, condition, duration, location, image, _id } = product;
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/product/${id}`, {
+    fetch(`https://serverside-sigma.vercel.app/product/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -20,7 +20,7 @@ const Item = ({ product, refetch }) => {
       });
   };
   const handleAdvertise = (id) => {
-    fetch(`http://localhost:5000/advertise/${id}`, {
+    fetch(`https://serverside-sigma.vercel.app/advertise/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())
@@ -75,15 +75,13 @@ const Item = ({ product, refetch }) => {
               advertised
             </label>
           ) : (
-            <td>
-              <label
-                // htmlFor="booking-modal"
-                className="btn btn-primary text-white"
-                onClick={() => handleAdvertise(_id)}
-              >
-                UnAdvertise
-              </label>
-            </td>
+            <label
+              // htmlFor="booking-modal"
+              className="btn btn-primary text-white"
+              onClick={() => handleAdvertise(_id)}
+            >
+              UnAdvertise
+            </label>
           )}
         </div>
       </div>

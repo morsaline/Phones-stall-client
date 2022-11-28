@@ -49,7 +49,7 @@ const AddProduct = () => {
     };
     console.log(product);
 
-    fetch("http://localhost:5000/phones", {
+    fetch("https://serverside-sigma.vercel.app/phones", {
       method: "POST",
       headers: {
         "content-type": "application/json",

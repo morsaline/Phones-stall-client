@@ -17,14 +17,14 @@ const TableCard = ({ seller, idx, refetch }) => {
   };
 
   const handleVerify = (id) => {
-    fetch(`http://localhost:5000/users/${id}`, {
+    fetch(`https://serverside-sigma.vercel.app/users/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         toast.success("verified succesfully");
-        refetch();
+        // refetch();
       });
   };
 

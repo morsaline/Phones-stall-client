@@ -18,7 +18,9 @@ const AllBuyers = () => {
     queryKey: ["allbuyers"],
     queryFn: async () => {
       try {
-        const res = await fetch(`http://localhost:5000/allbuyers`);
+        const res = await fetch(
+          `https://serverside-sigma.vercel.app/allbuyers`
+        );
         const data = await res.json();
         // console.log(data);
         return data;

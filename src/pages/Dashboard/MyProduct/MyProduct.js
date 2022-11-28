@@ -17,7 +17,7 @@ const MyProduct = () => {
     queryFn: async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/myproducts/${user?.email}`
+          `https://serverside-sigma.vercel.app/myproducts/${user?.email}`
         );
         if (res.status === 403 || res.status === 401) {
           logout();
@@ -37,11 +37,25 @@ const MyProduct = () => {
   return (
     <div>
       <h1 className="text-2xl  mb-5 text-center font-bold my-3">My Products</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-        {myproducts?.map((product) => (
-          <Item key={product._id} product={product} refetch={refetch}></Item>
-        ))}
-      </div>
+      {myproducts.length > 0 ? (
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {myproducts?.map((product) => (
+              <Item
+                key={product._id}
+                product={product}
+                refetch={refetch}
+              ></Item>
+            ))}
+          </div>
+        </>
+      ) : (
+        <>
+          <p className="text-3xl text-cener my-5">
+            Not Added product your my products right now.
+          </p>
+        </>
+      )}
     </div>
   );
 };

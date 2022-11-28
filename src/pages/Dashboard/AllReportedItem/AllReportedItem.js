@@ -14,7 +14,9 @@ const AllReportedItem = () => {
     queryKey: ["reporteditem"],
     queryFn: async () => {
       try {
-        const res = await fetch(`http://localhost:5000/reporteditem`);
+        const res = await fetch(
+          `https://serverside-sigma.vercel.app/reporteditem`
+        );
         const data = await res.json();
         // console.log(data);
         return data;
@@ -25,7 +27,7 @@ const AllReportedItem = () => {
   });
 
   const handleReportDelete = (id) => {
-    fetch(`http://localhost:5000/reporteditem/${id}`, {
+    fetch(`https://serverside-sigma.vercel.app/reporteditem/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -37,8 +39,8 @@ const AllReportedItem = () => {
         //   console.log(data);
       });
   };
-  if(isLoading){
-    return <SmallLoader></SmallLoader>
+  if (isLoading) {
+    return <SmallLoader></SmallLoader>;
   }
   return (
     <div>

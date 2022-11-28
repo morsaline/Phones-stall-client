@@ -18,6 +18,7 @@ const Login = () => {
   const [loginUserEmail, setLoginUserEmail] = useState("");
   const [createdUserEmail, setCreatedUserEmail] = useState("");
   //   const [token] = UseToken(loginUserEmail);
+  const [userLoading, setUserLoading] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const [token] = UseAuthToken(loginUserEmail);
@@ -37,9 +38,11 @@ const Login = () => {
         console.log(user);
         // console.log(user);
         // getUserToken(data.email).then((data) => {
+        setUserLoading(true);
         if (data) {
           navigate("/");
         }
+
         // });
         setLoginUserEmail(data.email);
       })
@@ -49,6 +52,7 @@ const Login = () => {
       })
       .finally(() => {
         setLoading(false);
+        setUserLoading(false);
       });
   };
 

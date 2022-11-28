@@ -27,7 +27,7 @@ const Card = ({ product, setItem }) => {
     description,
   } = product;
   const handleReport = (id) => {
-    fetch(`http://localhost:5000/product/reported/${id}`, {
+    fetch(`https://serverside-sigma.vercel.app/product/reported/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())
