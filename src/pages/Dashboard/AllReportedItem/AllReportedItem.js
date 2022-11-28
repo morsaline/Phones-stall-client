@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import SmallLoader from "../../../loader/SmallLoader/SmallLoader";
 import TableCard from "../../../Shared/TableCard/TableCard";
 
 const AllReportedItem = () => {
@@ -36,6 +37,9 @@ const AllReportedItem = () => {
         //   console.log(data);
       });
   };
+  if(isLoading){
+    return <SmallLoader></SmallLoader>
+  }
   return (
     <div>
       <h1 className="text-2xl  mb-5 font-bold text-center my-3">

@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import UseVerifyRole from "../../../Components/Button/Hooook/VerifyRole";
 import { AuthContext } from "../../../contexts/AuthProvider";
+import SmallLoader from "../../../loader/SmallLoader/SmallLoader";
 // import { useDelete } from "../../../Delete/Delete";
 import TableCard from "../../../Shared/TableCard/TableCard";
 
@@ -28,7 +29,9 @@ const AllBuyers = () => {
   });
 
   // useDelete();
-
+  if (isLoading) {
+    return <SmallLoader></SmallLoader>;
+  }
   return (
     <div>
       <h1 className="text-2xl  mb-5 my-4 text-center font-bold">All Buyers</h1>

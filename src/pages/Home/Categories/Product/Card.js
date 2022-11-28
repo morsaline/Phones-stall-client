@@ -10,8 +10,22 @@ const Card = ({ product, setItem }) => {
   const [role] = UseVerifyRole(user?.email);
 
   console.log(product);
-  const { brand, condition, duration, image, location, model, _id, name } =
-    product;
+  const {
+    brand,
+    condition,
+    email,
+    duration,
+    image,
+    location,
+    model,
+    phone,
+    _id,
+    name,
+    year_of_purchase,
+    resale_price,
+    original_price,
+    description,
+  } = product;
   const handleReport = (id) => {
     fetch(`http://localhost:5000/product/reported/${id}`, {
       method: "PUT",
@@ -23,12 +37,16 @@ const Card = ({ product, setItem }) => {
       });
   };
   return (
-    <div className="card mx-auto bg-base-100 shadow-xl  border p-4 w-[300px]">
-      <figure>
-        <img className="h-[300px] rounded" src={image} alt="Shoes" />
+    <div className=" md:w-full bg-base-100 shadow-xl w-10/12 mx-auto md:flex  border p-4 mb-4">
+      <figure className=" md:w-2/5 mx-auto">
+        <img
+          className="h-[300px] rounded text-center w-full p-3"
+          src={image}
+          alt="Shoes"
+        />
       </figure>
-      <div className="card-body p-0">
-        <h2 className="card-title my-2">{model}</h2>
+      <div className=" p-0 md:w-3/5">
+        <h2 className=" my-2">{model}</h2>
         <p className=" flex">
           Sellers Name : {name}{" "}
           {product?.status === "verified" ? (
@@ -39,12 +57,17 @@ const Card = ({ product, setItem }) => {
             <></>
           )}
         </p>
+        <p>email:{email}</p>
+        <p>Brand:{brand}</p>
         <p>condition:{condition}</p>
-        <p>used:{duration}</p>
+        <p>Resale Price:{resale_price}</p>
+        <p>Original Price:{original_price}</p>
+        <p>purchase year:{year_of_purchase}</p>
         <p>location:{location}</p>
+        <p>Phone Number:{phone}</p>
         <p>post Date:{product.post_date}</p>
         <p>Original Price:{product.original_price}</p>
-        <p>Resale Price:{product.resale_price}</p>
+        <p>Description:{description}</p>
 
         {product?.status === "verified" ? (
           <>
@@ -54,7 +77,7 @@ const Card = ({ product, setItem }) => {
           <></>
         )}
 
-        <div className="card-actions justify-end">
+        <div className=" flex justify-end gap-4 ">
           <label
             htmlFor="booking-modal"
             className="btn btn-primary text-white"

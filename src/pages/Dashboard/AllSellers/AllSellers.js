@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthProvider";
+import SmallLoader from "../../../loader/SmallLoader/SmallLoader";
 import TableCard from "../../../Shared/TableCard/TableCard";
 
 const AllSellers = () => {
@@ -23,6 +24,9 @@ const AllSellers = () => {
       }
     },
   });
+  if (isLoading) {
+    return <SmallLoader></SmallLoader>;
+  }
   console.log(allsellers);
   return (
     <div>

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { FaUserAlt } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
@@ -35,12 +35,6 @@ const Navbar = () => {
           </li>
         </>
       )}
-      <li>
-        <p>{user?.email}</p>
-      </li>
-      <li>
-        <p>{<FaUserAlt className="text-white bg-white"></FaUserAlt>}</p>
-      </li>
       {user ? (
         <>
           {" "}
@@ -51,6 +45,12 @@ const Navbar = () => {
       ) : (
         ""
       )}
+      <li>
+        <p>{user?.email}</p>
+      </li>
+      <li>
+        <i class="fa-solid fa-user"></i>
+      </li>
     </React.Fragment>
   );
 
@@ -78,7 +78,10 @@ const Navbar = () => {
             tabIndex={1}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
-            {menuItems}
+            {menuItems}{" "}
+            <p className="h-[30px] w-[30px] rounded-full">
+              {<FaStar className="text-white bg-white"></FaStar>}
+            </p>
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl">
@@ -86,7 +89,12 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal p-0  rounded-lg">{menuItems}</ul>
+        <ul className="menu menu-horizontal p-0  rounded-lg">
+          {menuItems}{" "}
+          <p className="h-[30px] w-[30px] rounded-full">
+            {/* {<FaUser className="text-white bg-white"></FaUser>} */}
+          </p>
+        </ul>
       </div>
       <label
         tabIndex={2}

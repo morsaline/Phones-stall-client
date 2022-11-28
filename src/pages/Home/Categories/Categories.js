@@ -36,7 +36,7 @@ const Categories = () => {
       <p className="text-center p-5  mx-auto font-bold text-3xl my-3">
         Categories
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 border rounded p-5">
+      <div className="grid grid-cols-1 w-11/12 mx-auto md:grid-cols-2 lg:grid-cols-3 gap-5 border rounded p-5">
         {brands.map((brand, i) => (
           <h2
             key={i}

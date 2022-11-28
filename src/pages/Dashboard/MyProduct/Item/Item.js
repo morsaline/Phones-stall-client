@@ -66,13 +66,25 @@ const Item = ({ product, refetch }) => {
           >
             Delete
           </label>
-          <label
-            // htmlFor="booking-modal"
-            className="btn btn-primary text-white"
-            onClick={() => handleAdvertise(_id)}
-          >
-            UnAdvertise
-          </label>
+
+          {product.advertise === true ? (
+            <label
+              // htmlFor="booking-modal"
+              className="btn btn-primary text-white"
+            >
+              advertised
+            </label>
+          ) : (
+            <td>
+              <label
+                // htmlFor="booking-modal"
+                className="btn btn-primary text-white"
+                onClick={() => handleAdvertise(_id)}
+              >
+                UnAdvertise
+              </label>
+            </td>
+          )}
         </div>
       </div>
     </div>

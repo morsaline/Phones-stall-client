@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
+import SmallLoader from "../../../loader/SmallLoader/SmallLoader";
 import Item from "./Item/Item";
 
 const MyProduct = () => {
@@ -29,7 +30,10 @@ const MyProduct = () => {
       }
     },
   });
-  
+
+  if (isLoading) {
+    return <SmallLoader></SmallLoader>;
+  }
   return (
     <div>
       <h1 className="text-2xl  mb-5 text-center font-bold my-3">My Products</h1>
