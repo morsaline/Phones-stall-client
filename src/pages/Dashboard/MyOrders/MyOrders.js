@@ -15,16 +15,9 @@ const MyOrders = () => {
     queryFn: async () => {
       try {
         const res = await fetch(
-          `https://serverside-sigma.vercel.app/myorders/${user?.email}`,
-          {
-            headers: {
-              authorization: `bearer ${localStorage.getItem("authToken")}`,
-            },
-          }
+          `https://serverside-sigma.vercel.app/myorders/${user?.email}`
         );
-        if (res.status === 403 || res.status === 401) {
-          logout();
-        }
+
         const data = await res.json();
         return data;
         // console.log(data);
@@ -34,9 +27,10 @@ const MyOrders = () => {
     },
   });
   if (isLoading) {
-    console.log(user?.email);
+    // console.log(user?.email);
     return <SmallLoader></SmallLoader>;
   }
+  console.log(myorders);
   return (
     <div>
       <h1 className="text-2xl  mb-5 text-center my-3">My Orders</h1>

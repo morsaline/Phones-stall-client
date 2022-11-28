@@ -19,9 +19,7 @@ const MyProduct = () => {
         const res = await fetch(
           `https://serverside-sigma.vercel.app/myproducts/${user?.email}`
         );
-        if (res.status === 403 || res.status === 401) {
-          logout();
-        }
+
         const data = await res.json();
         return data;
         // console.log(data);
