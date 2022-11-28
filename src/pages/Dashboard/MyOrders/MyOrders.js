@@ -11,7 +11,7 @@ const MyOrders = () => {
     refetch,
     isLoading,
   } = useQuery({
-    queryKey: ["myorders", user?.email],
+    queryKey: ["myorders", user],
     queryFn: async () => {
       try {
         const res = await fetch(

@@ -24,7 +24,7 @@ const TableCard = ({ seller, idx, refetch }) => {
       .then((data) => {
         console.log(data);
         toast.success("verified succesfully");
-        // refetch();
+        refetch();
       });
   };
 

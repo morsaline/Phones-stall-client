@@ -38,6 +38,7 @@ const Login = () => {
         console.log(user);
         // console.log(user);
         // getUserToken(data.email).then((data) => {
+        toast.success("login sucessfully");
         setUserLoading(true);
         if (data) {
           navigate("/");
