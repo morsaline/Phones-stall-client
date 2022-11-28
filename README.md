@@ -6,6 +6,11 @@ PhonesStall
 
 website: https://phones-stall.web.app/
 
+# admin User Detail
+
+admin user: admin@gmail.com
+admin password: 123456
+
 # Fuctionality
 
 1. this site is mobile responsive it has firebase authentication with email and password and google
